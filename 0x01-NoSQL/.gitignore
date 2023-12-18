@@ -1,0 +1,5 @@
+dump/
+*.zip
+*.swp
+*main.py
+__pycache__/
