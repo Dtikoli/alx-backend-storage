@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-"""
-students
-"""
+""" A utility function that sorts students by their average """
 
 
 def top_students(mongo_collection):

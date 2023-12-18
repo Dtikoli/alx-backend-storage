@@ -1,13 +1,9 @@
 #!/usr/bin/env python3
-"""an improved script that provides some stats about Nginx logs"""
+""" A script that provides some stats about Nginx logs """
 from pymongo import MongoClient
 
 
 if __name__ == "__main__":
-    '''
-    provides some stats about Nginx logs
-    improved by adding the top 10 of the most present IPs
-    '''
     client = MongoClient('mongodb://127.0.0.1:27017')
     col = client.logs.nginx
     print("{} logs".format(col.estimated_document_count()))
@@ -19,12 +15,10 @@ if __name__ == "__main__":
     print("{} status check".format(status_get))
     print("IPs:")
     topIps = col.aggregate([
-        {"$group":
-            {
-                "_id": "$ip",
-                "count": {"$sum": 1}
-            }
-        },
+        {"$group": {
+            "_id": "$ip",
+            "count": {"$sum": 1}
+        }},
         {"$sort": {"count": -1}},
         {"$limit": 10},
         {"$project": {
