@@ -127,8 +127,7 @@ class Cache:
         Returns:
             str: data
         """
-        data = self.get(key, lambda x: x.decode('utf-8'))
-        return data
+        return self.get(key, lambda d: d.decode('utf-8'))
 
     def get_int(self, key: str) -> int:
         """
@@ -138,4 +137,4 @@ class Cache:
         Returns:
             int: data
         """
-        data = self
+        return self.get(key, int)
